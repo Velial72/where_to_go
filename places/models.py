@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+
+class Place(models.Model):
+    title = models.CharField(verbose_name='Название', max_length=50)
+    description_short = models.CharField(verbose_name='Короткое описание',
+                                         max_length=250)
+    description_long = models.TextField(verbose_name='Полное описание')
+    lng = models.FloatField(verbose_name='Долгота')
+    lat = models.FloatField(verbose_name='Широта')
