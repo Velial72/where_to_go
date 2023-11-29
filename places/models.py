@@ -10,9 +10,9 @@ class Place(models.Model):
     lat = models.FloatField(verbose_name='Широта')
 
     def __str__(self) -> str:
-        return self.title
+        return f'{self.title}'
 
 
 class Image(models.Model):
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
-    file = models.ImageField(verbose_name='Картинка', upload_to='media')
+    file = models.ImageField(verbose_name='Картинка', upload_to='')
