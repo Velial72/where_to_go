@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Place(models.Model):
-    id = models.CharField(max_length=250, primary_key=True)
+    place_id = models.CharField(max_length=250, unique=True)
     title = models.CharField(verbose_name='Название',
                              max_length=250)
     point_title = models.CharField(verbose_name='Назваение точки на карте',
@@ -22,6 +22,7 @@ class Place(models.Model):
 class Image(models.Model):
     place = models.ForeignKey(Place,
                               null=True,
-                              on_delete=models.CASCADE)
+                              on_delete=models.CASCADE,
+                              related_name='images')
     file = models.ImageField(verbose_name='Картинка',
                              upload_to='')
