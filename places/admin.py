@@ -1,24 +1,27 @@
 from django.contrib import admin
-from places.models import Place, Image
 from django.utils.html import format_html
+from adminsortable2.admin import SortableStackedInline, SortableAdminBase
+from places.models import Place, Image
 
 
-class ImageInline(admin.TabularInline):
+class ImageInline(SortableStackedInline):
     model = Image
-    readonly_fields = ['show_image']
+    readonly_fields = ['preview']
 
-    def show_image(self, obj):
-        return format_html(
-            f'<img src="{obj.file.url}" width="200" height="200" />'
-        )
+    def preview(self, obj):
+        return format_html('<img src="{}" width="200" height="200" />',
+                           obj.file.url
+                           )
+
 
 @admin.register(Place)
-class AdminPlace(admin.ModelAdmin):
+class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
     list_display = ["title", "lng", "lat"]
     inlines = [
         ImageInline,
     ]
 
+
 @admin.register(Image)
-class AdminImage(admin.ModelAdmin):
+class ImageAdmin(admin.ModelAdmin):
     list_display = ['place', 'file_position']

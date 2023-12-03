@@ -21,9 +21,16 @@ class Place(models.Model):
 
 class Image(models.Model):
     place = models.ForeignKey(Place,
-                              null=True,
                               on_delete=models.CASCADE,
                               related_name='images')
     file = models.ImageField(verbose_name='Картинка',
                              upload_to='')
-    file_position = models.IntegerField(verbose_name='Позиция', null=True)
+    file_position = models.IntegerField(verbose_name='Позиция',
+                                        null=False,
+                                        blank=False,
+                                        default=0)
+
+    class Meta:
+        ordering = ['file_position']
+        verbose_name = 'Картинка'
+        verbose_name_plural = 'Картинки'

@@ -5,7 +5,6 @@ from places.models import Place
 
 
 def show_main_page(request):
-    '''Main_page view'''
     places = Place.objects.all()
     features = [
         {
@@ -13,15 +12,14 @@ def show_main_page(request):
             "geometry": {
                 "type": "Point",
                 "coordinates": [place.lng, place.lat]
-                },
+            },
             "properties": {
                 "title": place.point_title,
                 "placeId": place.place_id,
                 "detailsUrl": reverse(show_place_json, args=[place.id])
-                }
+            }
         } for place in places]
 
-    print('print output', reverse(show_place_json, args=[places[1].id]))
     context = {
         'places_geojson': {
             "type": "FeatureCollection",
@@ -32,7 +30,6 @@ def show_main_page(request):
 
 
 def show_place_json(request, place_id):
-    '''Place json view'''
     place = get_object_or_404(Place, pk=place_id)
     response = {
         "title": place.title,
