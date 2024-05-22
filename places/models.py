@@ -6,3 +6,8 @@ class Place(models.Model):
   description_long = models.TextField()
   lng = models.FloatField(max_length=200)
   lat = models.FloatField(max_length=200)
+
+
+class Image(models.Model):
+  title = models.CharField(max_length=200)
+  image = models.ImageField()
