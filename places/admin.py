@@ -10,3 +10,4 @@ class AdminPlace(admin.ModelAdmin):
 @admin.register(Image)
 class AdminImage(admin.ModelAdmin):
     list_display = ['id', 'title']
+    list_display_links = ['title']
