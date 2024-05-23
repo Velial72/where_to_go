@@ -2,12 +2,14 @@ from django.contrib import admin
 from .models import Place, Image
 
 
+class AdminImageInline(admin.TabularInline):
+    model = Image
+    extra = 1
+
+
 @admin.register(Place)
 class AdminPlace(admin.ModelAdmin):
     list_display = ['title']
-
-
-@admin.register(Image)
-class AdminImage(admin.ModelAdmin):
-    list_display = ['id', 'title']
-    list_display_links = ['title']
+    inlines = [
+        AdminImageInline
+    ]
