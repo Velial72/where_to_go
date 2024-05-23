@@ -4,7 +4,7 @@ from .models import Place, Image
 
 @admin.register(Place)
 class AdminPlace(admin.ModelAdmin):
-    list_display = ['title']
+    list_display = ['id', 'title']
 
 
 @admin.register(Image)

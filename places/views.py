@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from places.models import Place
+
 
 def show_index(request):
     places = Place.objects.all()
@@ -28,3 +29,12 @@ def show_index(request):
     }
 
     return render(request, "index.html", context = context)
+
+
+def get_json_data(request, place_id):
+    place = get_object_or_404(Place, pk=place_id)
+
+    context = {
+        'title' : place.title
+    }
+    return render(request, 'place.html', context=context)
