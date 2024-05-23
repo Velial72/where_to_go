@@ -1,12 +1,15 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from tinymce.widgets import TinyMCE
 from .models import Place, Image
 
 
 class AdminImageInline(admin.TabularInline):
     model = Image
     extra = 1
+    fields = ('title', 'position', 'preview_image')
     readonly_fields = ['preview_image']
+
 
     def preview_image(self, obj):
         if obj:
@@ -23,4 +26,9 @@ class AdminPlace(admin.ModelAdmin):
     inlines = [
         AdminImageInline
     ]
-    
+
+
+@admin.register(Image)
+class AdminImage(admin.ModelAdmin):
+    '''Admin panel for Image model'''
+    list_display = ['title', 'position', ]
