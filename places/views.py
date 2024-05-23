@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse
 from places.models import Place
 
 
@@ -34,7 +35,15 @@ def show_index(request):
 def get_json_data(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
 
-    context = {
-        'title' : place.title
+    response = {
+        "title": place.title,
+        "images": [photo.image.path for photo in place.images.all()],
+        "description_short": place.description_short,
+        "description_long": place.description_long,
+        "coordinates": {
+            "lat": place.lat,
+            "lng": place.lng
+        }
     }
-    return render(request, 'place.html', context=context)
+
+    return JsonResponse(response, json_dumps_params={'ensure_ascii': False, 'indent': 4})
