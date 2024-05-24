@@ -30,5 +30,4 @@ class AdminPlace(SortableAdminBase, admin.ModelAdmin):
 
 @admin.register(Image)
 class AdminImage(admin.ModelAdmin):
-    '''Admin panel for Image model'''
     list_display = ['title',]
