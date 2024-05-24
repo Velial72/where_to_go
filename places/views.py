@@ -17,8 +17,8 @@ def show_index(request):
                 },
             "properties": {
                 "title": place.title,
-                "placeId": place.place_id,
-                "detailsUrl": reverse('get_json_data', args=[place.pk])
+                "placeId": place.title,
+                "detailsUrl": reverse('get_json_data', args=[place.id])
                 }
             }
         )
@@ -36,11 +36,11 @@ def show_index(request):
 
 
 def get_json_data(request, place_id):
-    place = get_object_or_404(Place, pk=place_id)
+    place = get_object_or_404(Place.objects.prefetch_related('images'), pk=place_id)
 
     response = {
         "title": place.title,
-        "images": [photo.image.url for photo in place.images.all()],
+        "imgs": [photo.image.url for photo in place.images.all()],
         "description_short": place.description_short,
         "description_long": place.description_long,
         "coordinates": {
