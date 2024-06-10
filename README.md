@@ -6,7 +6,7 @@
 
 Сайт о самых интересных местах Москвы.
 
-![Скриншот главной страницы]()
+![Скриншот главной страницы](https://github.com/Velial72/where_to_go/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202024-06-10%2022-25-52.png)
 
 
 ## HКак добавить новую локацию
@@ -29,13 +29,12 @@ python3 --version
 pip install -r requirements.txt
 ```
 
-* Скопируй код с [GitHub]()
+* Скопируй код с [GitHub](https://github.com/Velial72/where_to_go)
 
     Перед запуском необходимо настроить переменные среды. Создай файл ".env" со следующим содержимым:
 
     ```
     SECRET_KEY=<put here your secret key>
-    ALLOWED_HOSTS=localhost,127.0.0.1,<add here your website address>
     DEBUG=<set False for development and True for production>
     ```
 
