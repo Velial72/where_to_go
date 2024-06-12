@@ -34,7 +34,7 @@ pip install -r requirements.txt
     Перед запуском необходимо настроить переменные среды. Создай файл ".env" со следующим содержимым:
 
     ```
-    SECRET_KEY=<put here your secret key>
+    DJANGO_KEY=<put here your secret key>
     DEBUG=<set False for development and True for production>
     ```
 
@@ -45,7 +45,6 @@ pip install -r requirements.txt
 
 * Выполни миграцию базы данных:
     ```
-    python3 manage.py makemigrations places
     python3 manage.py migrate
     ```
 
@@ -58,7 +57,7 @@ pip install -r requirements.txt
 
 ## Тестовые данные
 
-Для загрузки новых локаций используй команду и ссылку на данные как в примере "sample_place_file.json":
+Для загрузки новых локаций используй команду и ссылку на данные как в примере [sample_place_file.json](https://github.com/Velial72/where_to_go/blob/main/sample_place_file.json):
 
 ```
 python manage.py load_place http://example.com/sample_place_file.json
