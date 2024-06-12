@@ -50,7 +50,7 @@ class Command(BaseCommand):
                             image = ContentFile(image_response.content, name=image_name)
                         )
                     except requests.RequestException as e:
-                        logging.error(f"Error fetching image {image_url}: {e}")
+                        logging.error(f'Error fetching image {image_url}: {e}')
 
                 if not place_created:
                     logging.info(f'Place "{added_place}" was already added earlier')
@@ -58,8 +58,8 @@ class Command(BaseCommand):
                 logging.info(f'New place "{added_place}" added')
 
             except requests.RequestException as e:
-                logging.error(f"Error fetching JSON from {json_url}: {e}")
+                logging.error(f'Error fetching JSON from {json_url}: {e}')
             except json.JSONDecodeError as e:
-                logging.error(f"Error decoding JSON from {json_url}: {e}")
+                logging.error(f'Error decoding JSON from {json_url}: {e}')
             except Exception as e:
-                logging.error(f"Unexpected error: {e}")
+                logging.error(f'Unexpected error: {e}')
