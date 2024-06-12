@@ -10,14 +10,12 @@ class AdminImageInline(SortableStackedInline):
     extra = 1
     readonly_fields = ['preview_image']
 
-
     def preview_image(self, obj):
         if obj:
             return format_html('<img src="{}" style="max-height: 200px; max-width: 100%;" />', obj.image.url)
         else:
             return 'картинки нет'
         
-
 
 @admin.register(Place)
 class AdminPlace(SortableAdminBase, admin.ModelAdmin):
