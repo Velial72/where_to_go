@@ -20,7 +20,7 @@ class AdminImageInline(SortableStackedInline):
 @admin.register(Place)
 class AdminPlace(SortableAdminBase, admin.ModelAdmin):
     list_display = ['title']
-
+    search_fields = ['title']
     inlines = [
         AdminImageInline
     ]
@@ -29,3 +29,4 @@ class AdminPlace(SortableAdminBase, admin.ModelAdmin):
 @admin.register(Image)
 class AdminImage(admin.ModelAdmin):
     list_display = ['title',]
+    autocomplete_fields = ['title', ]
