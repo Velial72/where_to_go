@@ -8,9 +8,9 @@ from .models import Place, Image
 class AdminImageInline(SortableStackedInline):
     model = Image
     extra = 1
-    readonly_fields = ['preview_image']
+    readonly_fields = ['get_preview']
 
-    def preview_image(self, obj):
+    def get_preview(self, obj):
         if obj:
             return format_html('<img src="{}" style="max-height: 200px; max-width: 100%;" />', obj.image.url)
         else:
