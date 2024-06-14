@@ -29,8 +29,8 @@ class Command(BaseCommand):
 
                 defaults = dict(
                     title=place['title'],
-                    description_short=place['description_short'],
-                    description_long=place['description_long'],
+                    description_short=place['short_description'],
+                    description_long=place['long_description'],
                     lng=place['coordinates']['lng'],
                     lat=place['coordinates']['lat']
                 )
