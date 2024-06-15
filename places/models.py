@@ -22,8 +22,8 @@ class Image(models.Model):
     image = models.ImageField(verbose_name='картинка', upload_to='')
     position = models.IntegerField(verbose_name='позиция', db_index=True, default=0)
 
-  class Meta:
-      ordering = ['position']
-      verbose_name = 'картинка'
-      verbose_name_plural = 'картинки'
-      unique_together = ('image', 'title')
+    class Meta:
+        ordering = ['position']
+        verbose_name = 'картинка'
+        verbose_name_plural = 'картинки'
+        unique_together = ('image', 'title')
